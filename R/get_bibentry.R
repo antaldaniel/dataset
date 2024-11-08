@@ -21,7 +21,7 @@ create_bibentry <- function(reference) {
   version     <- ifelse (is.null(reference$version), "0.1.0", as.character(reference$version))
   publisher   <-  ifelse (is.null(reference$publisher), ":unas", as.character(reference$publisher))
   identifier  <-  ifelse (is.null(reference$identifier), ":tba", as.character(reference$identifier))
-  doi         <-  ifelse (is.null(reference$doi), NULL, as.character(reference$doi))
+  doi         <-  ifelse (is.null(reference$doi), "", as.character(reference$doi))
   description <-  ifelse (is.null(reference$description), as.character(":unas"), as.character(reference$description))
   language    <-  ifelse (is.null(reference$language), ":unas", as.character(reference$language))
   #subject     <-  ifelse (is.null(reference$subject), NULL, reference$subject)
@@ -46,7 +46,6 @@ create_bibentry <- function(reference) {
                   year = year,
                   resourceType = "Dataset",
                   identifier = identifier,
-                  doi = doi,
                   version = version,
                   description  = description,
                   language = language,
@@ -60,7 +59,7 @@ create_bibentry <- function(reference) {
 
     tmp$author <- c(tmp$author, reference$contributor)
   }
-
+  if (nchar(doi)>0) tmp$doi <- reference$doi
   if (!is.null(reference$date)) tmp$date <- reference$date
   if (!is.null(reference$type)) tmp$type <- reference$type
   if (!is.null(reference$coverage)) tmp$coverage <- reference$coverage

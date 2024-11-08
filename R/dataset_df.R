@@ -25,7 +25,6 @@ dataset_df <- function(reference=NULL, var_labels=NULL, units=NULL, ...) {
 
   reference
   dataset_bibentry <- create_bibentry(reference)
-  print(dataset_bibentry)
 
   new_my_tibble(tibble::tibble(...),
                 dataset_bibentry=dataset_bibentry)
@@ -94,8 +93,8 @@ tbl_sum.dataset_df <- function(x, ...) {
 }
 
 #' @export
-summary.dataset_df <- function(x, ...) {
-  cat("Title/n")
+summary.dataset_df <- function(object, ...) {
+  print(get_bibentry(object), "text")
   NextMethod()
 }
 

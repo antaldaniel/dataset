@@ -13,7 +13,7 @@ provenance <- function(dataset) {
 #' @keywords internal
 initialise_provenance <- function(dataset) {
 
-  this_bibentry <- dataset_bibentry(dataset)
+  this_bibentry <- get_bibentry(dataset)
 
   prov <- n_triples(
     c(n_triple(this_bibentry$doi, "a", "http://purl.org/linked-data/cube#DataSet"),

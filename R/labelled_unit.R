@@ -51,3 +51,15 @@ as.character.haven_labelled_unit <- function(x, ...) {
   NextMethod()
 }
 
+#' @rdname labelled_unit
+#' @export
+summary.haven_labelled_unit <- function(object, ...) {
+
+  title <- ifelse(nchar(var_label(object))>1, var_label(object), "")
+
+  title <- ifelse(nchar(var_unit(object)) & nchar(title)>1,
+                  paste0(title, " (", var_unit(object), ")\n"),
+                  paste0(title, "\n"))
+  cat(title)
+  NextMethod()
+}

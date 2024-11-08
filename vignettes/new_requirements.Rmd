@@ -2,7 +2,7 @@
 title: "New Requirements"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{new_requirements}
+  %\VignetteIndexEntry{New Requirements}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -50,18 +50,37 @@ Our aim is to improve the semantic description of the observations and the varia
 For example, when working with this small dataset:
 
 ```{r smallcountrydataset}
-small_country_dataset <- data.frame(
-  country_name = c("Andorra", "Lichtenstein"), 
-  gdp = c(3897000000, 7365000000), 
-  population = c( 77543, 40015)
+options(sciphen=4)
+small_country_dataset <- dataset_df(
+  country_name = c("Andorra", "Lichtenstein"),
+  gdp = labelled_unit(c(3897, 7365), label = "Gross Domestic Product", unit = "million dollars"), 
+  population = c(77543, 40015), 
+  reference = list(
+    author = person(given="Jane", family="Doe"), 
+    title = "Small Country Dataset", 
+    publisher = "Reprex"
+  )
 )
-
-small_country_dataset$gdp_capita <- small_country_dataset$gdp / small_country_dataset$population
-
-small_country_dataset
 ```
 
+If you want to work with the data in the data.frame, you must know if the GDP is expressed in euros, dollars, thousands, millions or billions, in order to get to a meaningful GDP/capita figure.
 
+```{r summaryhavenunit}
+summary(small_country_dataset$gdp)
+```
+Because the GDP is expressed in millions of dollars, we have to adjust the nominator to dollars to get the GDP per capita express in *dollars*.
+
+```{r percapita}
+small_country_dataset$gdp_capita <- labelled_unit(
+  small_country_dataset$gdp*1e6 / small_country_dataset$population, 
+  unit = "dollar", 
+  label = "GDP Per Capita")
+```
+The `var_unit(small_country_dataset$gdp_capita)` command returns `r var_unit(small_country_dataset$gdp_capita)` and `var_label(small_country_dataset$gdp_capita)` returns `r var_label(small_country_dataset$gdp_capita)`.
+
+```{r summarynewlabelled}
+summary(small_country_dataset$gdp_capita)
+```
 In this case, 
 
 -    we must provide a machine-readable definition of GDP, population, and GDP/capita, to improve the semantics of the columns (variables)

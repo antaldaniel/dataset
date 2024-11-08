@@ -6,8 +6,12 @@
 #' @param triples Concatenated N-Triples created with \code{\link{n_triple}}.
 #' @return A character vector containing unique N-Triple strings.
 #' @examples
-#' triple_1 <- n_triple("http://example.org/show/218", "http://www.w3.org/2000/01/rdf-schema#label", "That Seventies Show")
-#' triple_2 <- n_triple("http://example.org/show/218", "http://example.org/show/localName",  '"Cette Série des Années Septante"@fr-be')
+#' triple_1 <- n_triple("http://example.org/show/218",
+#'                       "http://www.w3.org/2000/01/rdf-schema#label",
+#'                       "That Seventies Show")
+#' triple_2 <- n_triple("http://example.org/show/218",
+#'                      "http://example.org/show/localName",
+#'                      '"Cette Série des Années Septante"@fr-be')
 #' n_triples(c(triple_1, triple_2, triple_1))
 #' @export
 
@@ -68,10 +72,9 @@ create_iri <- function(x) {
   }
 }
 
-#author_person <- person(given="Daniel", family="Antal", comment = c(ORCID = "https://orcid.org/0000-0001-7513-6760"))
 
 #' @keywords internal
-prov_author <- function( author_person) {
+prov_author <- function(author_person) {
 
   if (inherits(author_person, "person")) {
     print_name <- "_:"

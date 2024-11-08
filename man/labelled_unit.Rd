@@ -4,6 +4,7 @@
 \alias{labelled_unit}
 \alias{is.labelled_unit}
 \alias{as.character.haven_labelled_unit}
+\alias{summary.haven_labelled_unit}
 \title{Create a labelled vector with defined unit of measure}
 \usage{
 labelled_unit(x = double(), labels = NULL, label = NULL, unit = NULL)
@@ -11,6 +12,8 @@ labelled_unit(x = double(), labels = NULL, label = NULL, unit = NULL)
 is.labelled_unit(x)
 
 \method{as.character}{haven_labelled_unit}(x, ...)
+
+\method{summary}{haven_labelled_unit}(object, ...)
 }
 \arguments{
 \item{x}{A vector to label. Must be either numeric (integer or double) or

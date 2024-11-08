@@ -97,7 +97,7 @@ var_label.dataset_df <- function(x,
 }
 
 #`var_label<-.haven_labelled_unit` <- function(x, value) {
-#  NextMethod()
+#  set_var_labels(x, value)
 #}
 
 
@@ -124,3 +124,20 @@ set_var_labels <- function(dataset, var_labels) {
 
   dataset
 }
+
+#' @keywords internal
+set_label_attribute <- function(x, value) {
+  if ((!is.character(value) && !is.null(value)) || length(value) > 1) {
+    stop(
+      "`unit` should be a single character string or NULL",
+      call. = FALSE,
+      domain = "R-dataset"
+    )
+  }
+  attr(x, "label") <- value
+  x
+}
+
+#' @rdname var_label
+#' @export
+`var_label<-` <- set_label_attribute

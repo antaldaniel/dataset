@@ -7,6 +7,6 @@
 # * https://testthat.r-lib.org/articles/special-files.html
 
 library(testthat)
-library(newdataset)
+library(dataset)
 
-test_check("newdataset")
+test_check("dataset")

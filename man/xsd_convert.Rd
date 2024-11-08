@@ -37,6 +37,8 @@ xsd_convert(x, idcol, ...)
 \method{xsd_convert}{Date}(x, idcol = NULL, ...)
 }
 \arguments{
+\item{x}{An object to be coerced to an XLM Schema defined string format.}
+
 \item{idcol}{The name or position of the column that contains the row
 (observation) identifiers. If \code{NULL}, it will make a new \code{idcol}
 from \code{\link[=row.names]{row.names()}}.}
@@ -54,7 +56,4 @@ xsd_convert(head(iris))
 
 # Convert dataset to XML Schema Definition
 xsd_convert(head(iris_dataset))
-}
-\seealso{
-\code{\link[=dataset]{dataset()}}
 }

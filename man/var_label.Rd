@@ -4,6 +4,7 @@
 \alias{var_label}
 \alias{var_label.haven_labelled_unit}
 \alias{var_label.dataset_df}
+\alias{var_label<-}
 \title{Get / Set a variable label}
 \usage{
 \method{var_label}{haven_labelled_unit}(x, ...)
@@ -15,6 +16,8 @@
   recurse = FALSE,
   ...
 )
+
+var_label(x) <- value
 }
 \arguments{
 \item{x}{a vector or a data.frame}
