@@ -19,6 +19,21 @@ test_that("n_triples()", {
 })
 
 
+test_that("create_iri()", {
+  expect_error(create_iri(list(a=1:2)))
+  expect_equal(create_iri(2), "\"2\"^^<http://www.w3.org/2001/XMLSchema#double>")
+  expect_true(grepl('http://www.w3.org/2001/XMLSchema#date>', create_iri(Sys.Date()) ))
+})
 
+author_person <- person(given = "Daniel", family = "Antal",
+                        email = "daniel.antal@dataobservatory.eu",
+                        role = c("aut", "cre"),
+                        comment = c(ORCID = "0000-0001-7513-6760")
+)
 
+test_that("get_orcid()", {
+  expect_equal(get_orcid(author_person), c(ORCID = "0000-0001-7513-6760"))
+  expect_equal(get_orcid(person("Jane Doe")), NULL)
+})
 
+#prov_author("Jane Doe")

@@ -1,0 +1,23 @@
+
+
+iris_bibentry <- get_bibentry(iris_dataset)
+
+test_that("get_bibentry() works", {
+  expect_equal(iris_bibentry$title, "Iris Dataset")
+  expect_equal(iris_bibentry$year, "1935")
+})
+
+test_that("create_bibentry() works", {
+  expect_equal(create_bibentry(reference=list(title="Test", author=person(given="Jane", family="Doe")))$title, "Test")
+  expect_error(create_bibentry(reference=list(title="Test", author=person(given="Jane", family="Doe"),
+                                              contributor ="author name string")))
+  expect_equal(create_bibentry(reference=list(title="Test", author=person(given="Jane", family="Doe"), geolocation="AD"))$geolocation, "AD")
+})
+
+test_that("set_bibentry() works", {
+  expect_equal(create_bibentry(reference=
+                                 list(title="Test",
+                                      author=person(given="Jane",
+                                                    family="Doe")))$year, substr(as.character(Sys.time()),1,4))
+
+})
