@@ -82,8 +82,8 @@ prov_author <- function(author_person) {
     if (!is.null(author_person$given))  print_name <- paste0(print_name, tolower(author_person$given))
     orcid <- get_orcid(author_person)
 
-  } else if (is.character(attr(x, "person"))) {
-    print_name <- paste0(attr(x, "person"), ": ")
+  } else if (is.character(attr(author_person, "person"))) {
+    print_name <- paste0(attr(author_person, "person"), ": ")
   } else { print_name = ""}
 
   if(!is.null(orcid)) {

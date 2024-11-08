@@ -54,9 +54,9 @@ create_bibentry <- function(reference) {
 
   if (!is.null(reference$format)) tmp$format <- reference$format
   if (!is.null(reference$contributor)) {
-    assertthat::assert_that(inherits(reference$contributor, "person"),
-                            msg="The contributor must be created with utils::person().")
-
+    if (! inherits(reference$contributor, "person")) {
+      stop ("The contributor must be created with utils::person().")
+    }
     tmp$author <- c(tmp$author, reference$contributor)
   }
   if (nchar(doi)>0) tmp$doi <- reference$doi

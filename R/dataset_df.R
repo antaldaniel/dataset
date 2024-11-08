@@ -3,13 +3,14 @@
 #' about the dataset as a whole.
 #' @param var_labels The long, human readable labels of each variable.
 #' @param units The units of measurement for the measured variables.
+#' @param definitions The linked definitions of the variables, attributes, or constants.
 #' @param ... The vectors (variables) that should be included in the dataset.
 #' @return A dataset_df object with rich metadata.
 #' @import vctrs
 #' @import pillar
 #' @export
 # User constructor
-dataset_df <- function(reference=NULL, var_labels=NULL, units=NULL, ...) {
+dataset_df <- function(reference=NULL, var_labels=NULL, units=NULL, definitions =NULL, ...) {
 
   dots <- list(...)
 
@@ -27,7 +28,10 @@ dataset_df <- function(reference=NULL, var_labels=NULL, units=NULL, ...) {
   dataset_bibentry <- create_bibentry(reference)
 
   new_my_tibble(tibble::tibble(...),
-                dataset_bibentry=dataset_bibentry)
+                dataset_bibentry=dataset_bibentry,
+                var_labels = var_labels,
+                units = units,
+                definitions = definitions)
 }
 
 # Developer constructor
@@ -35,7 +39,9 @@ dataset_df <- function(reference=NULL, var_labels=NULL, units=NULL, ...) {
 #' @keywords internal
 new_my_tibble <- function(x,
                           dataset_bibentry = NULL,
-                          var_labels = NULL) {
+                          var_labels = NULL,
+                          units = NULL,
+                          definitions = NULL) {
   stopifnot(is.data.frame(x))
   tmp <- tibble::new_tibble(
     x,

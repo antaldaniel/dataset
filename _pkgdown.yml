@@ -36,9 +36,16 @@ reference:
     contents:
       - dataset_df
       - get_bibentry
+      - provenance
+  - title: "Defined"
+    desc: >
+      A new labelled subclass that retains the unit of measure, definition and namespace of the variable.
+    contents:
+      - defined
       - var_label
       - var_unit
-      - provenance
+      - var_definition
+      - var_namespace
   - title: "Replication Dataset"
     desc: >
       Edgar Anderson's Iris Dataset with dataset metadata recorded as attributes.
@@ -51,4 +58,3 @@ reference:
       - n_triples
       - n_triple
       - xsd_convert
-      - labelled_unit

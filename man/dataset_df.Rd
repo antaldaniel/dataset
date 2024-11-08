@@ -7,7 +7,13 @@
 \alias{names.dataset_df}
 \title{Create a new dataset_df object}
 \usage{
-dataset_df(reference = NULL, var_labels = NULL, units = NULL, ...)
+dataset_df(
+  reference = NULL,
+  var_labels = NULL,
+  units = NULL,
+  definitions = NULL,
+  ...
+)
 
 \method{print}{dataset_df}(x, ...)
 
@@ -22,6 +28,8 @@ about the dataset as a whole.}
 \item{var_labels}{The long, human readable labels of each variable.}
 
 \item{units}{The units of measurement for the measured variables.}
+
+\item{definitions}{The linked definitions of the variables, attributes, or constants.}
 
 \item{...}{The vectors (variables) that should be included in the dataset.}
 }
