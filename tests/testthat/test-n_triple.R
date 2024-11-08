@@ -1,0 +1,18 @@
+triple_1 <- n_triple("http://example.org/show/218", "http://www.w3.org/2000/01/rdf-schema#label", "That Seventies Show")
+triple_2 <- n_triple("http://example.org/show/218", "http://example.org/show/localName",  '"Cette Série des Années Septante"@fr-be')
+
+test_that("n_triples()", {
+  expect_equal(triple_1, "<http://example.org/show/218> <http://www.w3.org/2000/01/rdf-schema#label> \"That Seventies Show\"^^<http://www.w3.org/2001/XMLSchema#string> .")
+  expect_equal(length(n_triples(c(triple_1, triple_2, triple_1))), 2)
+  expect_equal(length(n_triples(c(triple_1, triple_2))), 2)
+  expect_equal(n_triple("https://orcid.org/0000-0001-7513-6760", "a",  'http://www.w3.org/ns/prov#Agent'),
+               '<https://orcid.org/0000-0001-7513-6760> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/ns/prov#Agent> .')
+  expect_equal(create_iri(23), '\"23\"^^<http://www.w3.org/2001/XMLSchema#double>')
+  expect_equal(create_iri("23"), '\"23\"^^<http://www.w3.org/2001/XMLSchema#string>')
+  expect_equal(create_iri(as.integer(23)), '\"23\"^^<http://www.w3.org/2001/XMLSchema#integer>')
+  expect_equal(create_iri(as.Date("2024-10-30")), '\"2024-10-30\"^^<http://www.w3.org/2001/XMLSchema#date>')
+})
+
+
+
+

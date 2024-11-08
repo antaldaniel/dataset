@@ -1,0 +1,11 @@
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+docs
+inst/doc
+not_included/
+/doc/
+/Meta/
+old-functions/
+tests - Shortcut.lnk
