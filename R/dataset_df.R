@@ -1,9 +1,12 @@
 #' @title Create a new dataset_df object
+#' @details
+#' To check if an object is a dataset_df use \code{is.dataset_df(x)}.
 #' @param reference A list of bibliographic references and descriptive metadata
 #' about the dataset as a whole.
 #' @param var_labels The long, human readable labels of each variable.
 #' @param units The units of measurement for the measured variables.
 #' @param definitions The linked definitions of the variables, attributes, or constants.
+#' @param x A dataset for S3 methods.
 #' @param ... The vectors (variables) that should be included in the dataset.
 #' @return A dataset_df object with rich metadata.
 #' @import vctrs
@@ -110,16 +113,19 @@ is_dataset_df <- function(x) {
   inherits(x, "dataset_df")
 }
 
-#' @rdname dataset_df
-#' @export
+#' @keywords internal
 names.dataset_df <- function(x) {
   should_inform <- rlang::env_is_user_facing(rlang::caller_env())
-  if (should_inform) {
-    cli::cli_inform(c(
-      `!` = "The {.fn names} method of {.cls dataset_df} is for internal use only.",
-      i = "Did you mean {.fn colnames}?"
-    ))
-  }
+  #if (should_inform) {
+  #  cli::cli_inform(c(
+  #    `!` = "The {.fn names} method of {.cls dataset_df} is for internal use only.",
+  #    i = "Did you mean {.fn colnames}?"
+  ##  ))
+  #}
   NextMethod("names")
 }
 
+
+#`[[.dataset_df` <- function(x, i, j, ..., exact = TRUE) {
+#  NextMethod()
+#  }

@@ -9,6 +9,13 @@
 \usage{
 n_triple(s, p, o)
 }
+\arguments{
+\item{s}{The subject of a triplet.}
+
+\item{p}{The predicate of a triplet.}
+
+\item{o}{The object of a triplet.}
+}
 \description{
 Create a single N-Triple triple.
 }

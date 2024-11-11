@@ -2,12 +2,14 @@
 % Please edit documentation in R/var_label.R
 \name{var_label}
 \alias{var_label}
-\alias{var_label.haven_labelled_unit}
+\alias{var_label.defined}
 \alias{var_label.dataset_df}
-\alias{var_label<-}
+\alias{label_attribute}
+\alias{var_label<-.defined}
+\alias{var_label<-.dataset_df}
 \title{Get / Set a variable label}
 \usage{
-\method{var_label}{haven_labelled_unit}(x, ...)
+\method{var_label}{defined}(x, ...)
 
 \method{var_label}{dataset_df}(
   x,
@@ -17,7 +19,11 @@
   ...
 )
 
-var_label(x) <- value
+label_attribute(x)
+
+var_label.defined(x) <- value
+
+var_label.dataset_df(x) <- value
 }
 \arguments{
 \item{x}{a vector or a data.frame}
@@ -38,6 +44,6 @@ For data frames, with \code{var_labels()}, it could also be a named list or a
 character vector of same length as the number of columns in \code{x}.}
 }
 \description{
-See \code{haven::\link[haven:var_label]{var_label}} for details.
+See \code{\link[labelled:var_label]{labelled::var_label}} for details.
 }
 \keyword{internal}

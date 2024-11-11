@@ -5,8 +5,8 @@
 \alias{iris_dataset}
 \title{Edgar Anderson's Iris Data}
 \format{
-iris is a data frame with 150 cases (rows) and 5 variables (columns) named
-Sepal.Length, Sepal.Width, Petal.Length, Petal.Width, and Species.
+iris is a data frame with 150 cases (rows) and 6 variables (columns) named
+rowid, Sepal.Length, Sepal.Width, Petal.Length, Petal.Width, and Species.
 }
 \source{
 Fisher, R. A. (1936) The use of multiple measurements in taxonomic problems.

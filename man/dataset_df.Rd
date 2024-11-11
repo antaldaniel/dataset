@@ -4,7 +4,6 @@
 \alias{dataset_df}
 \alias{print.dataset_df}
 \alias{is_dataset_df}
-\alias{names.dataset_df}
 \title{Create a new dataset_df object}
 \usage{
 dataset_df(
@@ -18,8 +17,6 @@ dataset_df(
 \method{print}{dataset_df}(x, ...)
 
 is_dataset_df(x)
-
-\method{names}{dataset_df}(x)
 }
 \arguments{
 \item{reference}{A list of bibliographic references and descriptive metadata
@@ -32,10 +29,15 @@ about the dataset as a whole.}
 \item{definitions}{The linked definitions of the variables, attributes, or constants.}
 
 \item{...}{The vectors (variables) that should be included in the dataset.}
+
+\item{x}{A dataset for S3 methods.}
 }
 \value{
 A dataset_df object with rich metadata.
 }
 \description{
 Create a new dataset_df object
+}
+\details{
+To check if an object is a dataset_df use \code{is.dataset_df(x)}.
 }

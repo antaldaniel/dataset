@@ -13,6 +13,7 @@
 #' value labels, a variable label, an optional unit of measurement and linked
 #' definition.
 #' @importFrom haven labelled
+#' @importFrom labelled to_labelled
 #' @import vctrs
 #' @export
 
@@ -31,6 +32,14 @@ defined <- function(x,
     new_labelled_defined(x, labels = labels, label = label, unit = unit, definition = definition, namespace = namespace)
   } else if (inherits(x, "Date")) {
     new_datetime_defined(x, label = label, unit = unit, definition = definition, namespace = namespace)
+  } else if (is.factor(x)) {
+    labelled_x <- to_labelled(x)
+    attr(labelled_x, "label") <- label
+    var_unit(labelled_x) <- unit
+    var_definition(labelled_x) <- definition
+    var_namespace(labelled_x) <- namespace
+    attr(labelled_x, "class") <- c("haven_labelled_defined", class(labelled_x))
+    labelled_x
   }
 }
 

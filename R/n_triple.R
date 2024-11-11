@@ -26,6 +26,9 @@ n_triples <- function(triples) {
 #'  predicate and object of an RDF Triple. Use \code{\link{n_triples}} to serialize
 #'  multiple statements.
 #' @source \href{https://www.w3.org/TR/n-triples/}{RDF 1.1 N-Triples}
+#' @param s The subject of a triplet.
+#' @param p The predicate of a triplet.
+#' @param o The object of a triplet.
 #' @examples
 #' s <- "http://example.org/show/218"
 #' p <- "http://www.w3.org/2000/01/rdf-schema#label"
