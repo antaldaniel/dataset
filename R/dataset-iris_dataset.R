@@ -10,8 +10,8 @@
 #' @details See \code{datasets::\link[datasets:iris]{iris}} for details.
 #'
 #' @format
-#' iris is a data frame with 150 cases (rows) and 5 variables (columns) named
-#' Sepal.Length, Sepal.Width, Petal.Length, Petal.Width, and Species.
+#' iris is a data frame with 150 cases (rows) and 6 variables (columns) named
+#' rowid, Sepal.Length, Sepal.Width, Petal.Length, Petal.Width, and Species.
 #' @references
 #' Becker, R. A., Chambers, J. M. and Wilks, A. R. (1988) The New S Language.
 #' Wadsworth & Brooks/Cole.

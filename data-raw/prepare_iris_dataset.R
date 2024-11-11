@@ -1,19 +1,31 @@
 data(iris)
 eg_iris <- iris
-iris_doi <- "doi:10.5281/zenodo.10396807"
-row.names(eg_iris) <- paste0("iris:o", row.names(iris))
+iris_doi <- "10.5281/zenodo.10396807"
 
 iris_dataset <- dataset_df(
-  Sepal.Length = labelled_unit(eg_iris$Sepal.Length,
-                               label = "Length of the sepal in cm", unit = "centimeter"),
-  Petal.Length = labelled_unit(eg_iris$Sepal.Length,
-                               label = "Length of the petal in cm", unit = "centimeter"),
-  Sepal.Width = labelled_unit(eg_iris$Sepal.Width,
-                               label = "Width of the sepal in cm", unit = "centimeter"),
-  Petal.Width = labelled_unit(eg_iris$Petal.Width,
-                               label = "Width of the petal in cm", unit = "centimeter"),
-  Species = labelled_unit(eg_iris$Species,
-                              label = "Iris sp."),
+  rowid = defined(paste0("#", row.names(iris)),
+                  label = "ID in the iris dataset",
+                  namespace="10.5281/zenodo.10396807"),
+  Sepal.Length = defined(eg_iris$Sepal.Length,
+                         label = "Length of the sepal in cm",
+                         unit = "centimeter",
+                         definition = "https://www.wikidata.org/wiki/Property:P2043"),
+  Petal.Length = defined(eg_iris$Petal.Length,
+                         label = "Length of the petal in cm",
+                         unit = "centimeter",
+                         definition = "https://www.wikidata.org/wiki/Property:P2043"),
+  Sepal.Width = defined(eg_iris$Sepal.Width,
+                        label = "Width of the sepal in cm",
+                        unit = "centimeter",
+                        definition = "https://www.wikidata.org/wiki/Property:P2049"),
+  Petal.Width = defined(eg_iris$Petal.Width,
+                        label = "Width of the petal in cm",
+                        unit = "centimeter",
+                        definition  = "https://www.wikidata.org/wiki/Property:P2049"),
+  Species = defined(eg_iris$Species,
+                    label = "Taxon name within the Iris genus",
+                    definition = "https://npgsweb.ars-grin.gov/gringlobal/taxon/taxonomygenus?id=6074",
+                    namespace = "Iris" ),
   reference =  list(
     title = "Iris Dataset",
     author = person(given="Edgar", family="Anderson", role = "aut"),
@@ -26,8 +38,11 @@ iris_dataset <- dataset_df(
   )
 )
 
+
+attributes(iris_dataset$Species)
 get_bibentry(iris_dataset)
 
+var_definition(iris_dataset$Sepal.Length)
 #DSD <- DataStructure(iris_dataset)
 #DSD$Sepal.Length$label <- "The sepal length of iris specimen in centimeters."
 #DSD$Petal.Length$label <- "The petal length of iris specimen in centimeters."
@@ -38,6 +53,14 @@ get_bibentry(iris_dataset)
 
 #describe(iris_dataset)
 #attr(iris_dataset, "DataStructure") <- DSD
+prov <- n_triples(
+  c(n_triple("https://doi.org/10.5281/zenodo.10396807", "a", "http://purl.org/linked-data/cube#DataSet"),
+    n_triple("https://orcid.org/0000-0001-7513-6760", "a", "http://www.w3.org/ns/prov#Agent"),
+    n_triple("https://doi.org/10.5281/zenodo.6703764.", "a", "http://www.w3.org/ns/prov#SoftwareAgent")
+  )
+)
+
+attr(iris_dataset, "prov") <- prov
 usethis::use_data(iris_dataset, overwrite = TRUE)
 
 #snakecase::to_title_case("Edgar Anderson's Iris Data (For Testing the dataset R package)")
@@ -65,23 +88,18 @@ bibentry_to_list <- function(x) {
 temp_dir <- tempdir()
 tempcon <- file.path(temp_dir, "iris_dataset.bib")
 writeLines(text = paste(
-  format(get_bibentry(x=iris_dataset), "Bibtex"),
+  format(get_bibentry(dataset=iris_dataset), "Bibtex"),
   collapse = "\n\n"),
   con = tempcon )
 
 readLines(tempcon)
 
-prov <- n_triples(
-  c(n_triple("https://doi.org/10.5281/zenodo.10396807", "a", "http://purl.org/linked-data/cube#DataSet"),
-    n_triple("https://orcid.org/0000-0001-7513-6760", "a", "http://www.w3.org/ns/prov#Agent"),
-    n_triple("https://doi.org/10.5281/zenodo.6703764.", "a", "http://www.w3.org/ns/prov#SoftwareAgent")
-  )
-)
+
 
 attr(iris_dataset, "prov") <- prov
 provenance(iris_dataset)
 get_bibentry(iris_dataset)
-usethis::use_data(iris_dataset, overwrite=TRUE)
+
 
 iris_dataset
 
