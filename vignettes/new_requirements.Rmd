@@ -53,8 +53,9 @@ For example, when working with this small dataset:
 options(sciphen=4)
 small_country_dataset <- dataset_df(
   country_name = defined(
-    c("Andorra", "Lichtenstein"),
-    definition = "http://data.europa.eu/bna/c_6c2bb82d"), 
+    c("AD", "LI"),
+    definition = "http://data.europa.eu/bna/c_6c2bb82d", 
+    namespace = "https://www.geonames.org/countries/$1/"), 
   gdp = defined(
     c(3897, 7365), 
     label = "Gross Domestic Product", 

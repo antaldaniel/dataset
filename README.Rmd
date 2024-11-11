@@ -18,7 +18,7 @@ knitr::opts_chunk$set(
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of newdataset is to ...
+The aim of the 'dataset' package is to make tidy datasets easier to release, exchange and reuse. It organizes and formats data frame 'R' objects into well-referenced, well-described, interoperable datasets into release and reuse ready form.
 
 ## Installation
 
@@ -34,10 +34,9 @@ You can install the development version of newdataset like so:
 
 The aim of the dataset package is to improve the semantic infrastructure of tidy datasets beyond the current capabilities of the tidyverse packages.
 
-```{r example}
+```{r example, echo=FALSE}
 library(newdataset)
 data("iris_dataset")
-## basic example code
 iris_dataset
 ```
 To foster the findability, interoperability and reusability of a dataset, we attach standard metadata to the R object itself. Other metadata packages add this information to a separate CSV or JSON file, however, there is no guarantee that the next user will receive an intact R object and a separate metadata file. Therefore we attach this information to the native R object.
@@ -54,17 +53,23 @@ Can you divide the sepal length variable with sepal width? Technically you can, 
 ```{r}
 iris_dataset$Sepal.Length[1:3] / iris_dataset$Sepal.Width[1:3]
 ```
-But does it makes sense? With most statistical datasets, you only know if adding, subtracting, dividing and multiplying makes sense if you know the unit of measure. You may want to compare centimeters with centimeters, and avoid adding GDP values measured in dollars to GDP values measured in euros or yen.
+But does it makes sense? With most statistical datasets, you only know if adding, subtracting, dividing and multiplying makes sense if you know the unit of measure. You may want to compare centimetres with centimetres, and avoid adding GDP values measured in dollars to GDP values measured in euros or yen.
 
 So, we ensure that the unit of the variables remains attached in the attributes:
 
 
-```{r variable_labels}
-var_label(iris_dataset)
+```{r variablelabels, eval=FALSE}
+#needs to be corrected!
+var_label(iris_dataset, unlist=TRUE)
 ```
 ```{r units}
 var_unit(iris_dataset$Sepal.Length)
-var_unit(iris_dataset$Sepal.Width)
+```
+```{r defintion, eval=FALSE}
+var_definition(iris_dataset$Species)
+```
+```{r namespace, eval=FALSE}
+var_namespace(iris_dataset$Species)
 ```
 
 Last, but not least, how can we know that this `iris_dataset` is that `iris` dataset? What happened with the dataset since creation? We record and attach to the object data provenance information.
