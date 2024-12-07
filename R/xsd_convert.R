@@ -21,15 +21,21 @@ xsd_convert <- function(x, idcol, ...) {
 xsd_convert.data.frame <- function(x, idcol=NULL, ...) {
   get_type <- function(t) {
 
-    type <- switch(class(t)[[1]],
-                   "numeric"   = "xs:decimal",
-                   "factor"    = "xs:string",
-                   "logical"   = "xs:boolean",
-                   "integer"   = "xs:integer",
-                   "Date"      = "xs:date",
-                   "POSIXct"   = "xs:dateTime",
-                   "character" = "xs:string"
-    )
+    if (any(class(t) %in% c("numeric", "double"))) {
+      type <- "xs:decimal"
+    } else if (any(class(t)=="integer")) {
+      type <- "xs:integer"
+    } else if  (any(class(t) %in% c("character", "factor"))) {
+      type <- "xs:string"
+    } else if (any(class(t)=="logical")) {
+      type <- "xs:boolean"
+    } else if (any(class(t)=="numeric")) {
+      type <- "xs:decimal"
+    } else if (any(class(t)=="Date")) {
+      type <- "xs:date"
+    } else  if (any(class(t)=="POSIXct")) {
+      type <- "xs:dateTime"
+    }
 
     type
   }
@@ -43,7 +49,7 @@ xsd_convert.data.frame <- function(x, idcol=NULL, ...) {
 
   convert_column <- function(c) {
 
-    var_type <- get_type(x[[c]])
+    var_type <- get_type(t=x[[c]])
     if ( ! var_type %in% c("codelist", "literal") ) {
       paste0('\"', as.character(x[[c]]),  '\"', "^^<", var_type, ">")
     } else {
