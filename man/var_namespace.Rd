@@ -27,7 +27,9 @@ namespace_attribute(x) <- value
 \arguments{
 \item{x}{a vector}
 
-\item{value}{a character string or \code{NULL} to remove the namespace of measure}
+\item{...}{Further potential parameters reserved for inherited classes.}
+
+\item{value}{a character string or \code{NULL} to remove the namespace of measure.}
 }
 \description{
 Get / Set a namespace of measure

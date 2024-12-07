@@ -25,9 +25,11 @@ set_unit_attribute(x, value)
 unit_attribute(x) <- value
 }
 \arguments{
-\item{x}{a vector}
+\item{x}{A vector.}
 
-\item{value}{a character string or \code{NULL} to remove the unit of measure}
+\item{...}{Further potential parameters reserved for inherited classes.}
+
+\item{value}{A character string or \code{NULL} to remove the unit of measure.}
 }
 \description{
 Get / Set a unit of measure

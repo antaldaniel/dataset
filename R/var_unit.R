@@ -1,6 +1,7 @@
 #' @title Get / Set a unit of measure
-#' @param x a vector
-#' @param value a character string or `NULL` to remove the unit of measure
+#' @param x A vector.
+#' @param value A character string or `NULL` to remove the unit of measure.
+#' @param ... Further potential parameters reserved for inherited classes.
 #' @details
 #'   `get_variable_units()` is identical to `var_unit()`.
 #' @examples

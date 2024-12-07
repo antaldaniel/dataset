@@ -28,6 +28,8 @@ var_label.dataset_df(x) <- value
 \arguments{
 \item{x}{a vector or a data.frame}
 
+\item{...}{Further potential parameters reserved for inherited classes.}
+
 \item{unlist}{for data frames, return a named vector instead of a list}
 
 \item{null_action}{for data frames, by default \code{NULL} will be returned for

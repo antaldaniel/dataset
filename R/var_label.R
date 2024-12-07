@@ -28,6 +28,7 @@ var_label.defined <- function(x, ...) {
 #' @param recurse if `TRUE`, will apply `var_label()` on packed columns
 #' (see [tidyr::pack()]) to return the variable labels of each sub-column;
 #' otherwise, the label of the group of columns will be returned.
+#' @param ... Further potential parameters reserved for inherited classes.
 #' @export
 var_label.dataset_df <- function(x,
                                  unlist=FALSE,

@@ -1,6 +1,7 @@
 #' @title Get / Set a namespace of measure
 #' @param x a vector
-#' @param value a character string or `NULL` to remove the namespace of measure
+#' @param value a character string or `NULL` to remove the namespace of measure.
+#' @param ... Further potential parameters reserved for inherited classes.
 #' @details
 #'   `get_variable_namespaces()` is identical to `var_namespace()`.
 #' @examples
