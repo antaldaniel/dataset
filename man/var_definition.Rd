@@ -37,8 +37,8 @@ Get / set a definition
 }
 \examples{
 small_country_dataset <- dataset_df(
-  country_name = labelled_unit(c("Andorra", "Lichtenstein"), label  = "Country"),
-  gdp = labelled_unit(c(3897, 7365),
+  country_name = defined(c("Andorra", "Lichtenstein"), label  = "Country"),
+  gdp = defined(c(3897, 7365),
                       label = "Gross Domestic Product",
                       unit = "million dollars")
 )
