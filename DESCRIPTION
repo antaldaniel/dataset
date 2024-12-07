@@ -1,6 +1,6 @@
 Package: dataset
 Title: Create Data Frames that are Easier to Exchange and Reuse
-Version: 0.3.3001
+Version: 0.3.3002
 Language: en-US
 Authors@R: 
     c(person(given = "Daniel", family = "Antal", 
@@ -30,7 +30,9 @@ BugReports: https://github.com/dataobservatory-eu/dataset/issues
 Roxygen: list(markdown = TRUE)
 LazyData: true
 Imports: 
+    assertthat,
     haven,
+    ISOcodes,
     labelled,
     methods,
     pillar,

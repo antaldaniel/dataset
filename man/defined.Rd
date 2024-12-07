@@ -38,6 +38,8 @@ unit of measure or \code{NULL}.}
 \item{definition}{A character string of length one containing a linked definition.}
 
 \item{namespace}{A namespace for individual observations or categories.}
+
+\item{...}{Further parameters for inheritance, not in use.}
 }
 \value{
 The constructor \code{defined} returns a vector with defined

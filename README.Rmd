@@ -22,7 +22,7 @@ The aim of the 'dataset' package is to make tidy datasets easier to release, exc
 
 ## Installation
 
-You can install the development version of newdataset like so:
+You can install the development version of new_dataset like so:
 
 ``` r
 # FILL THIS IN! HOW CAN PEOPLE INSTALL YOUR DEV PACKAGE?
@@ -30,52 +30,41 @@ You can install the development version of newdataset like so:
 
 ## Example
 
-“Tidy datasets provide a standardised way to link the structure of a dataset (its physical layout) with its semantics (its meaning). [tidyr](https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html)” While the tidyverse packages have made it easier to structure dataset into a tidy format, the semantics of the data are often remain at such a minimal level that it does not allow a meaningful reuse of the dataset. Often the only information we have about the meaning of the dataset is a column heading as a variable name, and a sequential `row.number` as an observation identifier. There is no way we can find out if a data subject is observed multiple times. Without a unit of measure information we may add together miles and kilometers, kilograms and tons, euros and dollars. 
+“Tidy datasets provide a standardised way to link the structure of a dataset (its physical layout) with its semantics (its meaning). [tidyr](https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html)” 
 
-The aim of the dataset package is to improve the semantic infrastructure of tidy datasets beyond the current capabilities of the tidyverse packages.
+While the tidyverse packages have made it easier to structure datasets into a tidy format, the semantics of these datasets are not sufficiently rich for data exchange or publication, and often, they pose a difficulty for the same user if they take on work with the same dataset after a longer time.
+
+The dataset package aims to create extensions of the modernised data.frame, i.e., tibble that contains rich semantic information for data exchange and reuse. It adds standardised information to the attributes (metadata) of the columns and the data frame as a whole, and it supports standard XML serialisations for statistical data exchange.
 
 ```{r example, echo=FALSE}
-library(newdataset)
+library(dataset)
 data("iris_dataset")
 iris_dataset
 ```
-To foster the findability, interoperability and reusability of a dataset, we attach standard metadata to the R object itself. Other metadata packages add this information to a separate CSV or JSON file, however, there is no guarantee that the next user will receive an intact R object and a separate metadata file. Therefore we attach this information to the native R object.
 
-```{r bibentry}
+Our `dataset_df` class adds a `utils::bibentry` object to the attributes of the data.frame, and fills it up with the standard unassigned values of DataCite, an important open data publication standard. 
+
+```{r print}
 print(get_bibentry(iris_dataset), "Bibtex")
 ```
+We created the `defined` class, an extension of `haven::labelled` from tidyverse, that goes beyond adding variable labels to the columns of a tidy dataset, and value ables to the categorical variables. We add two more crucial metadata: a unit of measure and a definition, with the ability to use statistical and web exchange standards to provide such information with linked open data. 
 
-How can we work with the famous `iris` dataset, add new observations, or make calculations if we do not happen to know that the numeric variables are all measured in centimeters? Do we know exactly how to tell a `setosa` observation from a `virginica`, if we do not know that the `Species` variable refers to species in the _Iris_ genus, and `setosa` stands for _Iris setosa_?
+```{r defined}
+gdp <- defined(
+    c(3897, 7365), 
+    label = "Gross Domestic Product", 
+    unit = "million dollars", 
+    definition = "http://data.europa.eu/83i/aa/GDP")
 
+attributes(gdp)
+```
+A semantic application or a human user can look up the definition at  [http://data.europa.eu/83i/aa/GDP](https://data.europa.eu/83i/aa/GDP).
 
-Can you divide the sepal length variable with sepal width? Technically you can, because they have the same numeric class. 
+Some packages, for example, dataspice, help to add further information about the semantics of the dataset as a whole and some of its contents, but they detach such information from the data.frame that contains the data. Our aim was to retain all the critical information to publish, find, extend, join the dataset with other information in the R object itself.
 
 ```{r}
-iris_dataset$Sepal.Length[1:3] / iris_dataset$Sepal.Width[1:3]
-```
-But does it makes sense? With most statistical datasets, you only know if adding, subtracting, dividing and multiplying makes sense if you know the unit of measure. You may want to compare centimetres with centimetres, and avoid adding GDP values measured in dollars to GDP values measured in euros or yen.
-
-So, we ensure that the unit of the variables remains attached in the attributes:
-
-
-```{r variablelabels, eval=FALSE}
-#needs to be corrected!
-var_label(iris_dataset, unlist=TRUE)
-```
-```{r units}
-var_unit(iris_dataset$Sepal.Length)
-```
-```{r defintion, eval=FALSE}
-var_definition(iris_dataset$Species)
-```
-```{r namespace, eval=FALSE}
-var_namespace(iris_dataset$Species)
+saveRDS(iris_dataset, file = tempfile())
 ```
 
-Last, but not least, how can we know that this `iris_dataset` is that `iris` dataset? What happened with the dataset since creation? We record and attach to the object data provenance information.
-
-```{r provenance, echo = FALSE}
-cat(provenance(iris_dataset))
-```
 
 

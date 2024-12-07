@@ -1,6 +1,7 @@
-#' @title Get / set a definition
+#' @title Get / set a definition for a vector or a dataset
 #' @param x a vector
 #' @param value a character string or `NULL` to remove the definition of measure.
+#' @param ... Further parameters for inheritance, not in use.
 #' @details
 #'   `get_variable_definitions()` is identical to `var_definition()`.
 #' @examples
@@ -76,6 +77,7 @@ set_definition_attribute <- function(x, value) {
 `definition_attribute<-` <- set_definition_attribute
 
 
+#' @rdname var_definition
 #' @export
 set_var_definitions <- function(dataset, definitions) {
 

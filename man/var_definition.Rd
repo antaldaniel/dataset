@@ -8,7 +8,8 @@
 \alias{get_definition_attribute}
 \alias{set_definition_attribute}
 \alias{definition_attribute<-}
-\title{Get / set a definition}
+\alias{set_var_definitions}
+\title{Get / set a definition for a vector or a dataset}
 \usage{
 var_definition(x, ...)
 
@@ -23,14 +24,18 @@ get_definition_attribute(x)
 set_definition_attribute(x, value)
 
 definition_attribute(x) <- value
+
+set_var_definitions(dataset, definitions)
 }
 \arguments{
 \item{x}{a vector}
 
+\item{...}{Further parameters for inheritance, not in use.}
+
 \item{value}{a character string or \code{NULL} to remove the definition of measure.}
 }
 \description{
-Get / set a definition
+Get / set a definition for a vector or a dataset
 }
 \details{
 \code{get_variable_definitions()} is identical to \code{var_definition()}.

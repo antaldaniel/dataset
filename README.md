@@ -13,7 +13,7 @@ into release and reuse ready form.
 
 ## Installation
 
-You can install the development version of newdataset like so:
+You can install the development version of new_dataset like so:
 
 ``` r
 # FILL THIS IN! HOW CAN PEOPLE INSTALL YOUR DEV PACKAGE?
@@ -24,99 +24,98 @@ You can install the development version of newdataset like so:
 “Tidy datasets provide a standardised way to link the structure of a
 dataset (its physical layout) with its semantics (its meaning).
 [tidyr](https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html)”
-While the tidyverse packages have made it easier to structure dataset
-into a tidy format, the semantics of the data are often remain at such a
-minimal level that it does not allow a meaningful reuse of the dataset.
-Often the only information we have about the meaning of the dataset is a
-column heading as a variable name, and a sequential `row.number` as an
-observation identifier. There is no way we can find out if a data
-subject is observed multiple times. Without a unit of measure
-information we may add together miles and kilometers, kilograms and
-tons, euros and dollars.
 
-The aim of the dataset package is to improve the semantic infrastructure
-of tidy datasets beyond the current capabilities of the tidyverse
-packages.
+While the tidyverse packages have made it easier to structure datasets
+into a tidy format, the semantics of these datasets are not sufficiently
+rich for data exchange or publication, and often, they pose a difficulty
+for the same user if they take on work with the same dataset after a
+longer time.
+
+The dataset package aims to create extensions of the modernised
+data.frame, i.e., tibble that contains rich semantic information for
+data exchange and reuse. It adds standardised information to the
+attributes (metadata) of the columns and the data frame as a whole, and
+it supports standard XML serialisations for statistical data exchange.
 
     #> Anderson E (1935). "Iris Dataset." doi:10.5281/zenodo.10396807
     #> <https://doi.org/10.5281/zenodo.10396807>.
-    #>    Sepal.Length Petal.Length Sepal.Width Petal.Width Species   
-    #>    <hvn_lbl_>   <hvn_lbl_>   <hvn_lbl_>  <hvn_lbl_>  <hvn_lbl_>
-    #>  1 5.1          5.1          3.5         0.2         1         
-    #>  2 4.9          4.9          3           0.2         1         
-    #>  3 4.7          4.7          3.2         0.2         1         
-    #>  4 4.6          4.6          3.1         0.2         1         
-    #>  5 5            5            3.6         0.2         1         
-    #>  6 5.4          5.4          3.9         0.4         1         
-    #>  7 4.6          4.6          3.4         0.3         1         
-    #>  8 5            5            3.4         0.2         1         
-    #>  9 4.4          4.4          2.9         0.2         1         
-    #> 10 4.9          4.9          3.1         0.1         1         
+    #>    rowid      Sepal.Length Petal.Length Sepal.Width Petal.Width Species   
+    #>    <hvn_lbl_> <hvn_lbl_>   <hvn_lbl_>   <hvn_lbl_>  <hvn_lbl_>  <hvn_lbl_>
+    #>  1 #1         5.1          1.4          3.5         0.2         1 [setosa]
+    #>  2 #2         4.9          1.4          3           0.2         1 [setosa]
+    #>  3 #3         4.7          1.3          3.2         0.2         1 [setosa]
+    #>  4 #4         4.6          1.5          3.1         0.2         1 [setosa]
+    #>  5 #5         5            1.4          3.6         0.2         1 [setosa]
+    #>  6 #6         5.4          1.7          3.9         0.4         1 [setosa]
+    #>  7 #7         4.6          1.4          3.4         0.3         1 [setosa]
+    #>  8 #8         5            1.5          3.4         0.2         1 [setosa]
+    #>  9 #9         4.4          1.4          2.9         0.2         1 [setosa]
+    #> 10 #10        4.9          1.5          3.1         0.1         1 [setosa]
     #> # ℹ 140 more rows
 
-To foster the findability, interoperability and reusability of a
-dataset, we attach standard metadata to the R object itself. Other
-metadata packages add this information to a separate CSV or JSON file,
-however, there is no guarantee that the next user will receive an intact
-R object and a separate metadata file. Therefore we attach this
-information to the native R object.
+Our `dataset_df` class adds a `?utils::bibentry` object to the
+attributes of the data.frame, and fills it up with the standard
+unassigned values of DataCite, an important open data publication
+standard.
 
 ``` r
 print(get_bibentry(iris_dataset), "Bibtex")
 #> @Misc{,
 #>   title = {Iris Dataset},
 #>   author = {Edgar Anderson},
+#>   publisher = {American Iris Society},
 #>   year = {1935},
+#>   resourcetype = {Dataset},
+#>   identifier = {https://doi.org/10.5281/zenodo.10396807},
+#>   version = {0.1.0},
+#>   description = {The famous (Fisher's or Anderson's) iris data set.},
+#>   language = {en},
+#>   format = {application/r-rds},
+#>   rights = {:unas},
 #>   doi = {https://doi.org/10.5281/zenodo.10396807},
+#>   source = {https://doi.org/10.1111/j.1469-1809.1936.tb02137.x},
 #> }
 ```
 
-How can we work with the famous `iris` dataset, add new observations, or
-make calculations if we do not happen to know that the numeric variables
-are all measured in centimeters? Do we know exactly how to tell a
-`setosa` observation from a `virginica`, if we do not know that the
-`Species` variable refers to species in the *Iris* genus, and `setosa`
-stands for *Iris setosa*?
-
-Can you divide the sepal length variable with sepal width? Technically
-you can, because they have the same numeric class.
+We created the `defined` class, an extension of `haven::labelled` from
+tidyverse, that goes beyond adding variable labels to the columns of a
+tidy dataset, and value ables to the categorical variables. We add two
+more crucial metadata: a unit of measure and a definition, with the
+ability to use statistical and web exchange standards to provide such
+information with linked open data.
 
 ``` r
-iris_dataset$Sepal.Length[1:3] / iris_dataset$Sepal.Width[1:3]
-#> [1] 1.457143 1.633333 1.468750
+gdp <- defined(
+    c(3897, 7365), 
+    label = "Gross Domestic Product", 
+    unit = "million dollars", 
+    definition = "http://data.europa.eu/83i/aa/GDP")
+
+attributes(gdp)
+#> $label
+#> [1] "Gross Domestic Product"
+#> 
+#> $class
+#> [1] "haven_labelled_defined" "haven_labelled"         "vctrs_vctr"            
+#> [4] "double"                
+#> 
+#> $unit
+#> [1] "million dollars"
+#> 
+#> $definition
+#> [1] "http://data.europa.eu/83i/aa/GDP"
 ```
 
-But does it makes sense? With most statistical datasets, you only know
-if adding, subtracting, dividing and multiplying makes sense if you know
-the unit of measure. You may want to compare centimetres with
-centimetres, and avoid adding GDP values measured in dollars to GDP
-values measured in euros or yen.
+A semantic application or a human user can look up the definition at
+[http://data.europa.eu/83i/aa/GDP](https://data.europa.eu/83i/aa/GDP).
 
-So, we ensure that the unit of the variables remains attached in the
-attributes:
+Some packages, for example, dataspice, help to add further information
+about the semantics of the dataset as a whole and some of its contents,
+but they detach such information from the data.frame that contains the
+data. Our aim was to retain all the critical information to publish,
+find, extend, join the dataset with other information in the R object
+itself.
 
 ``` r
-#needs to be corrected!
-var_label(iris_dataset, unlist=TRUE)
+saveRDS(iris_dataset, file = tempfile())
 ```
-
-``` r
-var_unit(iris_dataset$Sepal.Length)
-#> [1] "centimeter"
-```
-
-``` r
-var_definition(iris_dataset$Species)
-```
-
-``` r
-var_namespace(iris_dataset$Species)
-```
-
-Last, but not least, how can we know that this `iris_dataset` is that
-`iris` dataset? What happened with the dataset since creation? We record
-and attach to the object data provenance information.
-
-    #> <https://doi.org/10.5281/zenodo.10396807> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://purl.org/linked-data/cube#DataSet> .
-    #> <https://orcid.org/0000-0001-7513-6760> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/ns/prov#Agent> .
-    #> <https://doi.org/10.5281/zenodo.6703764.> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/ns/prov#SoftwareAgent> .

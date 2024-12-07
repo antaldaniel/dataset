@@ -9,6 +9,7 @@
 #' unit of measure or `NULL`.
 #' @param definition A character string of length one containing a linked definition.
 #' @param namespace A namespace for individual observations or categories.
+#' @param ... Further parameters for inheritance, not in use.
 #' @return The constructor \code{defined} returns a vector with defined
 #' value labels, a variable label, an optional unit of measurement and linked
 #' definition.

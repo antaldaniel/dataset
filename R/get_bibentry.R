@@ -1,5 +1,7 @@
-#' @title Get the bibentry item of a dataset
+#' @title Get/set the Bibentry of the object.
 #' @param dataset A dataset created with \code{\link{dataset_df}}.
+#' @param value A \code{\link[utils:bibentry]{utils::bibentry}} object, or a newly
+#' initialised bibentry object with DataCite default values for unassigned entries.
 #' @importFrom utils bibentry
 #' @importFrom utils person
 #' @return A \code{\link[utils]{bibentry}} bibliographic entry created for the dataset.

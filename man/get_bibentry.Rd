@@ -3,7 +3,7 @@
 \name{get_bibentry}
 \alias{get_bibentry}
 \alias{set_bibentry}
-\title{Get the bibentry item of a dataset}
+\title{Get/set the Bibentry of the object.}
 \usage{
 get_bibentry(dataset)
 
@@ -11,12 +11,15 @@ set_bibentry(dataset, value)
 }
 \arguments{
 \item{dataset}{A dataset created with \code{\link{dataset_df}}.}
+
+\item{value}{A \code{\link[utils:bibentry]{utils::bibentry}} object, or a newly
+initialised bibentry object with DataCite default values for unassigned entries.}
 }
 \value{
 A \code{\link[utils]{bibentry}} bibliographic entry created for the dataset.
 }
 \description{
-Get the bibentry item of a dataset
+Get/set the Bibentry of the object.
 }
 \examples{
 get_bibentry(iris_dataset)
