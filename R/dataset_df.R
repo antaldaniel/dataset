@@ -59,6 +59,12 @@ new_my_tibble <- function(x,
 
 #' @rdname dataset_df
 #' @export
+is.dataset_df <- function(x) {
+  ifelse("dataset_df" %in% class(x), TRUE, FALSE)
+}
+
+#' @rdname dataset_df
+#' @export
 print.dataset_df <- function(x, ...) {
 
   dataset_bibentry <- get_bibentry(x)

@@ -2,6 +2,7 @@
 % Please edit documentation in R/dataset_df.R
 \name{dataset_df}
 \alias{dataset_df}
+\alias{is.dataset_df}
 \alias{print.dataset_df}
 \alias{is_dataset_df}
 \title{Create a new dataset_df object}
@@ -13,6 +14,8 @@ dataset_df(
   definitions = NULL,
   ...
 )
+
+is.dataset_df(x)
 
 \method{print}{dataset_df}(x, ...)
 
