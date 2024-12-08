@@ -38,9 +38,7 @@ var_definition.default <- function(x, ...) {
   x
 }
 
-#' @rdname var_definition
-#' @export
-get_variable_definitions <- var_definition
+#get_variable_definitions <- var_definition
 
 
 #' @rdname var_definition
@@ -77,21 +75,18 @@ set_definition_attribute <- function(x, value) {
 `definition_attribute<-` <- set_definition_attribute
 
 
-#' @rdname var_definition
-#' @param dataset A dataset created with \code{\link{dataset_df}}.
-#' @param definitions Multiple definitions to be added to a dataset.
-#' @export
-set_var_definitions <- function(dataset, definitions) {
 
-  var_definition_list <- list()
-  var_definition_list <- lapply(colnames(dataset), function(i) i)
-  names(var_definition_list) <- colnames(dataset)
+#set_var_definitions <- function(dataset, definitions) {
 
-  for (rn in which(names(var_definition_list) %in% names(var_labels))) {
-    var_definition_list[[rn]] <- var_labels[[which(names(var_definition_list)[rn]==names(var_labels))]]
-  }
+#  var_definition_list <- list()
+#  var_definition_list <- lapply(colnames(dataset), function(i) i)
+#  names(var_definition_list) <- colnames(dataset)#
 
-  attr(dataset, "var_definitions") <- var_definition_list
+#  for (rn in which(names(var_definition_list) %in% names(var_labels))) {
+#    var_definition_list[[rn]] <- var_labels[[which(names(var_definition_list)[rn]==names(var_labels))]]
+#  }
 
-  dataset
-}
+#  attr(dataset, "var_definitions") <- var_definition_list
+
+#  dataset
+#}

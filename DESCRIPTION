@@ -32,11 +32,13 @@ Roxygen: list(markdown = TRUE)
 LazyData: true
 Imports: 
     assertthat,
+    cli,
     haven,
     ISOcodes,
     labelled,
     methods,
     pillar,
+    rlang,
     tibble,
     utils,
     vctrs (>= 0.5.2)

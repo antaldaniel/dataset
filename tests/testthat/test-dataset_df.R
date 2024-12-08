@@ -12,15 +12,14 @@ test_that("new_my_tibble() works", {
   expect_output(print(provenance(myiris)), "<http://example.com/dataset#>")
 })
 
-iris_dataset1 <- iris_dataset
-iris_dataset2 <- iris_dataset
-
 test_that("is.dataset_df() works", {
   expect_true(is.dataset_df(iris_dataset))
   expect_false(is.dataset_df(mtcars))
 })
 
 test_that("rbind works", {
+  iris_dataset1 <- iris_dataset
+  iris_dataset2 <- iris_dataset
   expect_equal(nrow(rbind(iris_dataset1, iris_dataset2)), 300)
 })
 

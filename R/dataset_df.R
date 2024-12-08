@@ -41,8 +41,24 @@ dataset_df <- function(reference=NULL, var_labels=NULL, units=NULL, definitions 
 
 #' @rdname dataset_df
 #' @export
-as_dataset_df <- function(df, var_labels=NULL, units=NULL, definitions =NULL, ...) {
-  new_my_tibble(x,
+as_dataset_df <- function(df, var_labels=NULL, units=NULL, definitions =NULL, reference=NULL, ...) {
+
+  dots <- list(...)
+
+  sys_time <- Sys.time()
+  year <- substr(as.character(sys_time),1,4)
+
+  if(is.null(reference)) {
+    reference <- list(title="Untitled Dataset",
+                      author="Unknown Author")
+  }
+
+  if(is.null(reference$year)) reference$year <- year
+
+  reference
+  dataset_bibentry <- create_bibentry(reference)
+
+  new_my_tibble(df,
                 dataset_bibentry=dataset_bibentry,
                 var_labels = var_labels,
                 units = units,
@@ -57,7 +73,9 @@ new_my_tibble <- function(x,
                           var_labels = NULL,
                           units = NULL,
                           definitions = NULL) {
+  started_at_time <- Sys.time()
   stopifnot(is.data.frame(x))
+
   tmp <- tibble::new_tibble(
     x,
     dataset_bibentry = dataset_bibentry,
@@ -65,8 +83,15 @@ new_my_tibble <- function(x,
     nrow = nrow(x)
   )
 
+  ended_at_time <- Sys.time()
+
   set_var_labels(tmp, var_labels = var_labels)
 
+  prov <- default_provenance(started_at_time = started_at_time, ended_at_time = ended_at_time)
+
+  attr(tmp, "prov") <- prov
+
+  tmp
 }
 
 
@@ -78,6 +103,7 @@ is.dataset_df <- function(x) {
 }
 
 #' @rdname dataset_df
+#' @importFrom cli cat_line
 #' @export
 print.dataset_df <- function(x, ...) {
 
@@ -134,6 +160,7 @@ is_dataset_df <- function(x) {
 }
 
 #' @keywords internal
+#' @importFrom rlang caller_env env_is_user_facing
 names.dataset_df <- function(x) {
   should_inform <- rlang::env_is_user_facing(rlang::caller_env())
   #if (should_inform) {

@@ -11,3 +11,5 @@ var_definition(small_country_dataset$country_name) <- "http://data.europa.eu/bna
 test_that("var_definition() works", {
   expect_equal(var_definition(small_country_dataset$country_name), "http://data.europa.eu/bna/c_6c2bb82d")
 })
+
+
