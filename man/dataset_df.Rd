@@ -2,12 +2,22 @@
 % Please edit documentation in R/dataset_df.R
 \name{dataset_df}
 \alias{dataset_df}
+\alias{as_dataset_df}
 \alias{is.dataset_df}
 \alias{print.dataset_df}
 \alias{is_dataset_df}
 \title{Create a new dataset_df object}
 \usage{
 dataset_df(
+  reference = NULL,
+  var_labels = NULL,
+  units = NULL,
+  definitions = NULL,
+  ...
+)
+
+as_dataset_df(
+  df,
   reference = NULL,
   var_labels = NULL,
   units = NULL,
@@ -32,6 +42,8 @@ about the dataset as a whole.}
 \item{definitions}{The linked definitions of the variables, attributes, or constants.}
 
 \item{...}{The vectors (variables) that should be included in the dataset.}
+
+\item{df}{A data.frame to be converted to dataset_df.}
 
 \item{x}{A dataset for S3 methods.}
 }

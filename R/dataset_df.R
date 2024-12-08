@@ -7,6 +7,7 @@
 #' @param units The units of measurement for the measured variables.
 #' @param definitions The linked definitions of the variables, attributes, or constants.
 #' @param x A dataset for S3 methods.
+#' @param df A data.frame to be converted to dataset_df.
 #' @param ... The vectors (variables) that should be included in the dataset.
 #' @return A dataset_df object with rich metadata.
 #' @import vctrs
@@ -37,6 +38,30 @@ dataset_df <- function(reference=NULL, var_labels=NULL, units=NULL, definitions 
                 definitions = definitions)
 }
 
+
+#' @rdname dataset_df
+#' @export
+as_dataset_df <- function(df, reference=NULL, var_labels=NULL, units=NULL, definitions =NULL, ...) {
+
+  sys_time <- Sys.time()
+  year <- substr(as.character(sys_time),1,4)
+
+  if(is.null(reference)) {
+    reference <- list(title="Untitled Dataset",
+                      author="Unknown Author")
+  }
+
+  if(is.null(reference$year)) reference$year <- year
+
+  dataset_bibentry <- create_bibentry(reference)
+
+  new_my_tibble(df,
+                dataset_bibentry=dataset_bibentry,
+                var_labels = var_labels,
+                units = units,
+                definitions = definitions)
+}
+
 # Developer constructor
 #' @importFrom tibble new_tibble
 #' @keywords internal
@@ -56,6 +81,8 @@ new_my_tibble <- function(x,
   set_var_labels(tmp, var_labels = var_labels)
 
 }
+
+
 
 #' @rdname dataset_df
 #' @export

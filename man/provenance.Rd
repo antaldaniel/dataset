@@ -2,19 +2,29 @@
 % Please edit documentation in R/provenance.R
 \name{provenance}
 \alias{provenance}
-\title{Provenance}
+\alias{provenance<-}
+\title{Get or update provenance information}
 \usage{
-provenance(dataset)
+provenance(x)
+
+provenance(x) <- value
 }
 \arguments{
-\item{dataset}{A dataset created with \code{\link{dataset_df}}.}
-}
-\value{
-A string with N-Triple format provenance metadata
+\item{value}{A list that may contain the following elements: \code{wasInformedBy},
+\code{wasAssociatedWith}.}
 }
 \description{
-Provenance
+Add or update information about the history (provenance) of the dataset.
+}
+\details{
+For additional details see \code{vignette("provenance", package = "dataset")}.
 }
 \examples{
+# Get the provenance of a dataset:
 provenance(iris_dataset)
+
+# Update the provenance:
+provenance(iris_dataset) <- list(
+          wasInformedBy="https://doi.org/10.1111/j.1469-1809.1936.tb02137.x"
+          )
 }

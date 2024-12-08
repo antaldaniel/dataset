@@ -35,9 +35,10 @@ of the values might be labelled.}
 \item{unit}{A character string of length one containing the
 unit of measure or \code{NULL}.}
 
-\item{definition}{A character string of length one containing a linked definition.}
+\item{definition}{A character string of length one containing a
+linked definition or \code{NULL}.}
 
-\item{namespace}{A namespace for individual observations or categories.}
+\item{namespace}{A namespace for individual observations or categories or \code{NULL}.}
 
 \item{...}{Further parameters for inheritance, not in use.}
 }

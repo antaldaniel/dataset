@@ -26,7 +26,7 @@
 #' @export
 language <- function (x) {
   assert_that(is.dataset_df(x),
-              msg = "language(x): x must be a dataset object created with dataset() or as_dataset().")
+              msg = "language(x): x must be a dataset object created with dataset() or as_dataset_df().")
 
   ds_bibentry <- get_bibentry(x)
   as.character(ds_bibentry$language)
@@ -38,7 +38,7 @@ language <- function (x) {
 `language<-` <- function(x, iso_639_code = "639-3", value ) {
 
   assert_that(is.dataset_df(x),
-              msg = "language(x)<- value: x must be a dataset object created with dataset() or as_dataset().")
+              msg = "language(x)<- value: x must be a dataset object created with dataset() or as_dataset_df().")
 
   ds_bibentry <- get_bibentry(x)
   if (is.null(value)) {
