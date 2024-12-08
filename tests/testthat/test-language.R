@@ -5,12 +5,23 @@ test_that("language() works", {
 
 myiris <- iris_dataset
 value <- "fr"
-language(x=myiris) <- "fr"
+
 test_that("language() works", {
+  language(x=myiris) <- "fr"
   expect_equal(language(myiris), "fra")
 })
 
-language(x=myiris, iso_639_code = "639-1") <- "fr"
+
 test_that("language() works", {
+  language(x=myiris, iso_639_code = "639-1") <- "fr"
   expect_equal(language(myiris), "fr")
+})
+
+test_that("language() works", {
+  language(x=myiris, iso_639_code = "639-1") <- "FR"
+  expect_equal(language(myiris), "fr")
+})
+
+test_that("language()<- throws error", {
+  expect_error(language(x=myiris) <- "hello")
 })
