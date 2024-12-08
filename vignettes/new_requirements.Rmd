@@ -96,7 +96,7 @@ In this case,
 
 The metadata definitions of SDMX or open science are helpful, because they differentiate between metadata statements about the entire dataset as a structured information source, and metadata related to specific row/column intersections, where only the row, the column, and potentially the intersection cell value needs a formal definition.
 
-For example, we may want to add as metadata to the entire dataset the timeframe, the usage rights, the creator.
+For example, we may want to add as metadata to the entire dataset the time frame, the usage rights, the creator.
 
 We must remain aware that in the absence of an all-encompassing, general ontology of all concepts that may go into a dataset, all datasets will be used in some kind of disciplinary context. A dataset about GDP or population will be read in a socio-economic context; a dataset containing data from sound recordings of musical works will use definitions from a musicological context. While music from Andorra may share some semantic definitions of our tiny socio-economic dataset that observes Andorra's GDP and population, it is unlikely that the observation and variable definition will lack a broad context.
 
@@ -120,7 +120,7 @@ small_country_musicians$age <- defined(
 
 ```
 
-Specifically, our first dataset's general semantic context is about countries as observational units and statistical variables related to them, while the second contains individual musical recordings and observed musicological values of such recordings, a general property of the dataset that can be applied to the entire dataset. Similarly, important provenance information, authorship, use rights, etc, apply to the dataset, not to its specific cells. 
+Specifically, our first dataset's general semantic context is about countries as observational units and statistical variables related to them, while the second contains individual musical recordings and observed musicological values of such recordings, a general property of the dataset that can be applied to the entire dataset. Similarly, important provenance information, authorship, use rights, and so on, apply to the dataset, not to its specific cells. 
 
 ```{r summarymusicians}
 summary(small_country_musicians)

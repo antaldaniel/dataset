@@ -39,17 +39,7 @@ dataset_to_triples <- function(x, idcol=NULL) {
 
   tmp <- do.call(rbind, triple_list)
 
-  if (is_dataset) {
-    tmp2 <- dataset_df(x=tmp, reference = list(author=creator(x), title = new_title))
-    #tmp_DSD <- DataStructure(tmp2)
-    #tmp_DSD$s$label <- "Subject"
-    #tmp_DSD$s$label <- "Object"
-    #tmp_DSD$p$label <- "Predicate"
-    #DataStructure_update(tmp2, tmp_DSD)
-    tmp2
-  } else {
-    tmp
-  }
+  tmp
 
 }
 

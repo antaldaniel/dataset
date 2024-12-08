@@ -16,7 +16,7 @@
 #' definition.
 #' @importFrom haven labelled
 #' @importFrom labelled to_labelled
-#' @import vctrs
+#' @import vctrs methods
 #' @export
 
 defined <- function(x,

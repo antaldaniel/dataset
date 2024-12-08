@@ -9,8 +9,8 @@
 coverage](https://codecov.io/gh/antaldaniel/dataset/graph/badge.svg)](https://app.codecov.io/gh/antaldaniel/dataset)
 <!-- badges: end -->
 
-The aim of the ‘dataset’ package is to make tidy datasets easier to
-release, exchange and reuse. It organizes and formats data frame ‘R’
+The aim of the *dataset* package is to make tidy datasets easier to
+release, exchange and reuse. It organizes and formats data frame R
 objects into well-referenced, well-described, interoperable datasets
 into release and reuse ready form.
 
@@ -81,7 +81,7 @@ print(get_bibentry(iris_dataset), "Bibtex")
 
 We created the `defined` class, an extension of `haven::labelled` from
 tidyverse, that goes beyond adding variable labels to the columns of a
-tidy dataset, and value ables to the categorical variables. We add two
+tidy dataset, and value labels to the categorical variables. We add two
 more crucial metadata: a unit of measure and a definition, with the
 ability to use statistical and web exchange standards to provide such
 information with linked open data.

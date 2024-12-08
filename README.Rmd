@@ -48,7 +48,8 @@ Our `dataset_df` class adds a `utils::bibentry` object to the attributes of the 
 ```{r print}
 print(get_bibentry(iris_dataset), "Bibtex")
 ```
-We created the `defined` class, an extension of `haven::labelled` from tidyverse, that goes beyond adding variable labels to the columns of a tidy dataset, and value ables to the categorical variables. We add two more crucial metadata: a unit of measure and a definition, with the ability to use statistical and web exchange standards to provide such information with linked open data. 
+
+We created the `defined` class, an extension of `haven::labelled` from tidyverse, that goes beyond adding variable labels to the columns of a tidy dataset, and value labels to the categorical variables. We add two more crucial metadata: a unit of measure and a definition, with the ability to use statistical and web exchange standards to provide such information with linked open data. 
 
 ```{r defined}
 gdp <- defined(

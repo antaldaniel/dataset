@@ -1,5 +1,7 @@
 test_that("dataset_title() works", {
   expect_equal(dataset_title(iris_dataset), "Iris Dataset")
+  expect_error(dataset_title(mtcars))
+  expect_error(dataset_title(mtcars) <- "Error")
 })
 
 test_that("dataset_title() <- value works with overwrite", {

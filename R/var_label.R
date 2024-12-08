@@ -64,6 +64,7 @@ label_attribute <- function(x) {
 }
 
 #' @rdname var_label
+#' @importFrom labelled `var_label<-`
 #' @export
 `var_label<-.defined` <- function(x, value) {
   NextMethod()

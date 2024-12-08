@@ -31,5 +31,16 @@ test_that("set_bibentry() works", {
                                                       author=person(given="Jane",
                                                                     family="Doe")))$source))
   expect_equal(get_bibentry(set_bibentry(mtcars, NULL))$author, person("Unknown", "Author"))
+  expect_equal(create_bibentry(reference= list(title="Test",
+                                               author=person(given="Jane",
+                                                             family="Doe"),
+                                               datasource="test"))$source, "test")
+  expect_equal(create_bibentry(reference= list(title="Test",
+                                               author=person(given="Jane",
+                                                             family="Doe"),
+                                               type="dataset"))$type, "dataset")
 })
+
+
+
 

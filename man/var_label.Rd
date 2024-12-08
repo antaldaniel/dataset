@@ -21,9 +21,9 @@
 
 label_attribute(x)
 
-var_label.defined(x) <- value
+\method{var_label}{defined}(x) <- value
 
-var_label.dataset_df(x) <- value
+\method{var_label}{dataset_df}(x) <- value
 }
 \arguments{
 \item{x}{a vector or a data.frame}
