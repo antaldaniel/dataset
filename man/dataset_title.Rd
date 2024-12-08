@@ -10,7 +10,7 @@ dataset_title(x)
 dataset_title(x, overwrite = FALSE) <- value
 }
 \arguments{
-\item{x}{A dataset object created with \code{\link[=dataset_df]{dataset_df()}} or \code{\link[=as_dataset_df_df]{as_dataset_df_df()}}.}
+\item{x}{A dataset object created with \code{\link[=dataset_df]{dataset_df()}} or \code{\link[=as_dataset_df]{as_dataset_df()}}.}
 
 \item{overwrite}{If the attributes should be overwritten. In case it is set
 to \code{FALSE},it gives a warning with the current \code{title}

@@ -4,6 +4,9 @@
 # newdataset
 
 <!-- badges: start -->
+
+[![Codecov test
+coverage](https://codecov.io/gh/antaldaniel/dataset/graph/badge.svg)](https://app.codecov.io/gh/antaldaniel/dataset)
 <!-- badges: end -->
 
 The aim of the ‘dataset’ package is to make tidy datasets easier to
@@ -53,10 +56,9 @@ it supports standard XML serialisations for statistical data exchange.
     #> 10 #10        4.9          1.5          3.1         0.1         1 [setosa]
     #> # ℹ 140 more rows
 
-Our `dataset_df` class adds a `?utils::bibentry` object to the
-attributes of the data.frame, and fills it up with the standard
-unassigned values of DataCite, an important open data publication
-standard.
+Our `dataset_df` class adds a `utils::bibentry` object to the attributes
+of the data.frame, and fills it up with the standard unassigned values
+of DataCite, an important open data publication standard.
 
 ``` r
 print(get_bibentry(iris_dataset), "Bibtex")

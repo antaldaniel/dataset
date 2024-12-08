@@ -36,7 +36,7 @@ creator <- function(x) {
 #' @export
 `creator<-` <- function(x, overwrite = TRUE, value) {
   assert_that(is.dataset_df(x),
-              msg = "creator(x) <- value: x must be a dataset object created with dataset_df() or as_dataset_df_df().")
+              msg = "creator(x) <- value: x must be a dataset object created with dataset_df() or as_dataset_df().")
 
   if (is.null(value)) {
     return(x)

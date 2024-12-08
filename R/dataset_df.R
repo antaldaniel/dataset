@@ -41,21 +41,8 @@ dataset_df <- function(reference=NULL, var_labels=NULL, units=NULL, definitions 
 
 #' @rdname dataset_df
 #' @export
-as_dataset_df <- function(df, reference=NULL, var_labels=NULL, units=NULL, definitions =NULL, ...) {
-
-  sys_time <- Sys.time()
-  year <- substr(as.character(sys_time),1,4)
-
-  if(is.null(reference)) {
-    reference <- list(title="Untitled Dataset",
-                      author="Unknown Author")
-  }
-
-  if(is.null(reference$year)) reference$year <- year
-
-  dataset_bibentry <- create_bibentry(reference)
-
-  new_my_tibble(df,
+as_dataset_df <- function(df, var_labels=NULL, units=NULL, definitions =NULL, ...) {
+  new_my_tibble(x,
                 dataset_bibentry=dataset_bibentry,
                 var_labels = var_labels,
                 units = units,

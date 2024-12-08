@@ -2,7 +2,7 @@
 #' @description Get or reset the dataset's main title.
 #' @details In the DataCite definition, several titles can be used; it is not
 #' yet implemented.
-#' @param x A dataset object created with [dataset_df()] or [as_dataset_df_df()].
+#' @param x A dataset object created with [dataset_df()] or [as_dataset_df()].
 #' @param value The name(s) or title(s) by which a resource is known. See:
 #' \href{https://www.dublincore.org/specifications/dublin-core/dcmi-terms/elements11/title/}{dct:title}.
 #' @return A string with the dataset's title; \code{set_dataset_title} returns

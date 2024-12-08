@@ -33,6 +33,10 @@ set_var_definitions(dataset, definitions)
 \item{...}{Further parameters for inheritance, not in use.}
 
 \item{value}{a character string or \code{NULL} to remove the definition of measure.}
+
+\item{dataset}{A dataset created with \code{\link{dataset_df}}.}
+
+\item{definitions}{Multiple definitions to be added to a dataset.}
 }
 \description{
 Get / set a definition for a vector or a dataset

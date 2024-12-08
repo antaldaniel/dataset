@@ -3,7 +3,7 @@
 #' columns \code{s} for subject, \code{p} for predicate and \code{o} for
 #' object.
 #' @param x An R object that contains the data of the dataset (a data.frame or
-#' inherited from [`data.frame`][base::data.frame()]), for example, [dataset()]
+#' inherited from [`data.frame`][base::data.frame()]), for example, [dataset_df()]
 #' [tibble::tibble()], [tsibble::tsibble()], [data.table::data.table()].
 #' @param idcol The identifier column. If \code{idcol} is \code{NULL} it attempts to
 #' use the \code{row.names(df)} as an \code{idcol}.

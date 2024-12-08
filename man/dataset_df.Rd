@@ -16,14 +16,7 @@ dataset_df(
   ...
 )
 
-as_dataset_df(
-  df,
-  reference = NULL,
-  var_labels = NULL,
-  units = NULL,
-  definitions = NULL,
-  ...
-)
+as_dataset_df(df, var_labels = NULL, units = NULL, definitions = NULL, ...)
 
 is.dataset_df(x)
 

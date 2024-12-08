@@ -78,6 +78,8 @@ set_definition_attribute <- function(x, value) {
 
 
 #' @rdname var_definition
+#' @param dataset A dataset created with \code{\link{dataset_df}}.
+#' @param definitions Multiple definitions to be added to a dataset.
 #' @export
 set_var_definitions <- function(dataset, definitions) {
 

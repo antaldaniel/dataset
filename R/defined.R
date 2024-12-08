@@ -130,6 +130,7 @@ as.character.haven_labelled_defined <- function(x, ...) {
 }
 
 #' @rdname defined
+#' @param object An R object to be summarised.
 #' @export
 summary.haven_labelled_defined <- function(object, ...) {
 

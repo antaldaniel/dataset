@@ -1,5 +1,6 @@
 #' @title Create/add/retrieve a subject
-#' @param x A dataset object created with \code{dataset::\link{dataset}}.
+#' @param x A dataset object created with \code{dataset::\link{dataset_df}} or
+#' \code{dataset::\link{as_dataset_df}}.
 #' @examples
 #' subject(iris_dataset,
 #'         overwrite = TRUE) <- subject_create(

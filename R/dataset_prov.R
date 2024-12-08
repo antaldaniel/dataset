@@ -14,28 +14,40 @@ dataset_prov <- function(x= NULL,
                          dataset_id = "eg:dataset#",
                          author,
                          start_time = Sys.time(),
-                         end_time=Sys.time()) {
+                         end_time   =Sys.time()
+                         ) {
 
   cite_dataset <- citation("dataset")
   author_curie <- paste0(dataset_id, "author")
   process_curie <- paste0(dataset_id, "creation")
 
   if (!is.null(x) & is.dataset_df(x)) {
-    provenance_info <- provenance(x)
-
-    start_time <- provenance_info$started_at
-    end_time <- provenance_info$ended_at
-    was_associated_with <- provenance_info$wasAssocitatedWith
-    if (is.null(provenance_info$wasAssocitatedWith)) was_associated_with <- ""
-    author <- creator(x)
-  } else {
-    was_associated_with <- paste0("doi:", unlist(cite_dataset$doi))
+    if(!is.null(provenance(x))) {
+      provenance_info <- provenance(x)
+      start_time <- provenance_info$started_at
+      end_time <- provenance_info$ended_at
+      was_associated_with <- provenance_info$wasAssocitatedWith
+      if (is.null(provenance_info$wasAssocitatedWith)) {
+        was_associated_with <- ""
+        author <- creator(x) }  else {
+          was_associated_with <- paste0("doi:", unlist(cite_dataset$doi))
+        }
+    } else {
+      author <- creator(x)
+    }
   }
+
+ #test_for_null <- c(is.null(start_time),
+#                     is.null(end_time),
+ #                    is.null(author_curie),
+  #                   is.null(was_associated_with))
+
+
 
   dataset_creation <- data.frame(
     type = c("prov:Activity"),
-    startedAt = xsd_convert(start_time),
-    endedAt = xsd_convert(end_time),
+    startedAt    = xsd_convert(start_time),
+    endedAt      = xsd_convert(end_time),
     wasStartedBy = author_curie,
     wasAssocitatedWith = was_associated_with
   )
@@ -48,9 +60,9 @@ dataset_prov <- function(x= NULL,
 
   author_prov <- data.frame(
     type = c("prov:Agent"),
-    label = xsd_convert(as.character(author)),
-    givenName = xsd_convert(author[[1]]$given),
-    family_name = xsd_convert(author[[1]]$family)
+    label        = xsd_convert(as.character(author)),
+    givenName    = xsd_convert(author[[1]]$given),
+    family_name  = xsd_convert(author[[1]]$family)
   )
 
   author_prov2 <- data.frame(
