@@ -18,10 +18,10 @@
 #' @family Reference metadata functions
 #' @export
 rights <- function(x) {
-  assertthat::assert_that(is.dataset(x),
-                          msg = "rights(x): x must be a dataset object created with dataset() or as_dataset().")
+  assertthat::assert_that(is.dataset_df(x),
+                          msg = "rights(x): x must be a dataset object created with dataset_df() or as_dataset_df().")
 
-  DataBibentry <- dataset_bibentry(x)
+  DataBibentry <- get_bibentry(x)
   as.character(DataBibentry$rights)
 
 }
@@ -30,14 +30,14 @@ rights <- function(x) {
 #' @export
 `rights<-` <- function(x,  overwrite = FALSE, value) {
 
-  assertthat::assert_that(is.dataset(x),
+  assertthat::assert_that(is.dataset_df(x),
                           msg = "rights(x): x must be a dataset object created with dataset() or as_dataset().")
 
-  DataBibentry <- invisible(dataset_bibentry(x))
+  DataBibentry <- invisible(get_bibentry(x))
 
   if ( is.null(value) ) {
     DataBibentry$rights <- ":unas"
-    attr(x, "DataBibentry") <- DataBibentry
+    attr(x, "get_bibentry") <- DataBibentry
     return(invisible(x))
   }
 
@@ -57,6 +57,6 @@ rights <- function(x) {
     message ("The dataset has already a rights field: ",    DataBibentry$rights )
   }
 
-  attr(x, "DataBibentry") <- DataBibentry
+  attr(x, "get_bibentry") <- DataBibentry
   invisible(x)
 }
