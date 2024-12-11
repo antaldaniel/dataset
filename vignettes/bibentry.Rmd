@@ -2,7 +2,7 @@
 title: "Bibentry for FAIR datasets"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{bibentry}
+  %\VignetteIndexEntry{Bibentry for FAIR datasets}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -29,8 +29,6 @@ dataset_title(iris_dataset)
 dataset_title(iris_dataset_2, overwrite=TRUE) <- "The Famous Iris Dataset"
 get_bibentry(iris_dataset_2)
 ```
-
-
 ## Creators
 
 The \code{Creator} corresponds to [dct:creator](https://www.dublincore.org/specifications/dublin-core/dcmi-terms/elements11/creator/)
@@ -55,6 +53,24 @@ creator(iris_dataset_2)
 
 ## Further descriptive metadata about the whole dataset
 
+### Publication year
+
+The publication year is usually one of the most important descriptive metadata in repositories and libraries:
+
+```{r irispublicationyear}
+publication_year(iris_dataset_2)
+```
+The default value is `:unas` for unassigned values:
+
+```{r publicationyeardefault}
+# Revert to default (unassigned):
+publication_year(iris_dataset_2) <- NULL
+
+# Get the default value:
+publication_year(iris_dataset_2) 
+```
+### Language
+
 ```{r, language}
 # Get the language:
 language(iris_dataset)
@@ -62,5 +78,12 @@ language(iris_dataset)
 # Reset the language:
 language(iris_dataset_2) <- "French"
 language(iris_dataset_2)
+```
+### Rights statement
+
+
+```{r rights}
+# Add rights statement to the dataset
+rights(iris_dataset_2, overwrite = TRUE)  <- "GNU-2"
 ```
 

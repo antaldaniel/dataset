@@ -6,3 +6,5 @@
 ^\.Rproj\.user$
 ^README\.Rmd$
 ^codecov\.yml$
+^doc$
+^Meta$

@@ -27,7 +27,13 @@ articles:
          and Reuse of digital assets, particularly datacubes and datasets used in statistics and data
          analysis.
     contents:
-      - new-requirements
+      - new_requirements
+  - title: "Semantic Enrichment"
+    desc: >
+     Enriching metadata about the dataset as a whole, and it individual variables.
+    contents:
+       - bibentry
+       - defined
 
 reference:
   - title: "Dataset"
@@ -46,6 +52,19 @@ reference:
       - var_unit
       - var_definition
       - var_namespace
+  - title: "Bibliography functions"
+    desc: >
+      Functions to add and retain bibliographical data about the whole dataset, not its
+      individual columns only.
+    contents:
+      - datacite
+      - creator
+      - dataset_title
+      - language
+      - subject
+      - publication_year
+      - publisher
+      - rights
   - title: "Replication Dataset"
     desc: >
       Edgar Anderson's Iris Dataset with dataset metadata recorded as attributes.
@@ -58,3 +77,5 @@ reference:
       - n_triples
       - n_triple
       - xsd_convert
+      - dataset_to_triples
+      - id_to_column

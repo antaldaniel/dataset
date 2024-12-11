@@ -10,7 +10,8 @@ publisher(x)
 publisher(x, overwrite = TRUE) <- value
 }
 \arguments{
-\item{x}{A dataset object created with \code{dataset::\link{dataset}}.}
+\item{x}{A dataset object created with \code{dataset::\link{dataset_df}} or
+\code{dataset::\link{as_dataset_df}}.}
 
 \item{overwrite}{If the attributes should be overwritten. In case it is set
 to \code{FALSE},it gives a warning with the current \code{publisher}

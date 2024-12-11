@@ -8,7 +8,8 @@
 #' "holds, archives, publishes, prints, distributes, releases, issues, or produces" the
 #' code, use the property Contributor/contributorType/ hostingInstitution for the code
 #' repository.
-#' @param x A dataset object created with \code{dataset::\link{dataset}}.
+#' @param x A dataset object created with \code{dataset::\link{dataset_df}} or
+#' \code{dataset::\link{as_dataset_df}}.
 #' @param overwrite If the attributes should be overwritten. In case it is set
 #' to \code{FALSE},it gives a warning with the current \code{publisher}
 #' property instead of overwriting it. Defaults to \code{FALSE}.

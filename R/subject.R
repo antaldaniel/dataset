@@ -43,11 +43,11 @@ subject <- function(x) {
 #' @return A named list with the subject term, the subject scheme, URIs and prefix.
 #' @export
 subject_create <- function(term,
-                    schemeURI = NULL,
-                    valueURI = NULL,
-                    prefix = NULL,
-                    subjectScheme = NULL,
-                    classificationCode = NULL ) {
+                           schemeURI = NULL,
+                           valueURI = NULL,
+                           prefix = NULL,
+                           subjectScheme = NULL,
+                           classificationCode = NULL ) {
 
   if (is.null(term)) term <- ":tba"
 

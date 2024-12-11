@@ -4,13 +4,14 @@
 #' @details \code{Rights} corresponds to
 #' \href{https://www.dublincore.org/specifications/dublin-core/dcmi-terms/elements11/rights/}{dct:rights} and
 #' \code{\link{datacite}} Rights. Information about rights held in and over the resource.
-#' Typically, rights information includes a statement about various property rights associated with the resource,
-#' including intellectual property rights.
-#' @param x A dataset object created with \code{dataset::\link{dataset}}.
+#' Typically, rights information includes a statement about various property
+#' rights associated with the resource, including intellectual property rights.
+#' @param x A dataset object created with \code{dataset::\link{dataset_df}} or
+#' \code{dataset::\link{as_dataset_df}}.
 #' @param value The \code{Rights} as a character set.
-#' @param overwrite If the \code{Rights} attribute should be overwritten. In case it is set to \code{FALSE},
-#' it gives a message with the current \code{Rights} property instead of overwriting it.
-#' Defaults to \code{FALSE}.
+#' @param overwrite If the \code{Rights} attribute should be overwritten. In case it
+#' is set to \code{FALSE}, it gives a message with the current \code{Rights}
+#' property instead of overwriting it. Defaults to \code{FALSE}.
 #' @return The \code{Rights} attribute as a character of length 1 is added to \code{x}.
 #' @examples
 #' rights(iris_dataset) <- "CC-BY-SA"
@@ -37,7 +38,7 @@ rights <- function(x) {
 
   if ( is.null(value) ) {
     DataBibentry$rights <- ":unas"
-    attr(x, "get_bibentry") <- DataBibentry
+    attr(x, "dataset_bibentry") <- DataBibentry
     return(invisible(x))
   }
 
@@ -57,6 +58,6 @@ rights <- function(x) {
     message ("The dataset has already a rights field: ",    DataBibentry$rights )
   }
 
-  attr(x, "get_bibentry") <- DataBibentry
+  attr(x, "attribtes_bibentry") <- DataBibentry
   invisible(x)
 }

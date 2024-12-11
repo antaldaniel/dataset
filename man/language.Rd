@@ -43,4 +43,10 @@ language(myiris)
 language(myiris) <- "fr"
 language(myiris)
 }
+\seealso{
+Other Reference metadata functions: 
+\code{\link{publication_year}()},
+\code{\link{publisher}()},
+\code{\link{rights}()}
+}
 \concept{Reference metadata functions}
