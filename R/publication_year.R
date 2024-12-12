@@ -4,8 +4,8 @@
 #' publicly available in \code{YYYY} format.
 #' See
 #' \href{https://support.datacite.org/docs/datacite-metadata-schema-v44-mandatory-properties#publicationyearadditional-guidance}{Publication Year: DataCite Additional Guidance}.
-#' @param x A dataset object created with \code{dataset::\link{dataset_df}} or
-#' \code{dataset::\link{as_dataset_df}}.
+#' @param x A semantically rich data frame object created by  \code{dataset::\link{dataset_df}} or
+#'  \code{dataset::\link{as_dataset_df}}.
 #' @param value The publication_year as a character set.
 #' @param overwrite If the attributes should be overwritten. In case it is set to \code{FALSE},
 #' it gives a message with the current \code{PublicationYear} property instead of overwriting it.

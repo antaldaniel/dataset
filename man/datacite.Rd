@@ -148,4 +148,8 @@ datacite(
 
 as_datacite(iris_dataset, type="dataset")
 }
+\seealso{
+Other metadata functions: 
+\code{\link{dublincore}()}
+}
 \concept{metadata functions}

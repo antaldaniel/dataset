@@ -6,8 +6,8 @@
 #' \code{\link{datacite}} Rights. Information about rights held in and over the resource.
 #' Typically, rights information includes a statement about various property
 #' rights associated with the resource, including intellectual property rights.
-#' @param x A dataset object created with \code{dataset::\link{dataset_df}} or
-#' \code{dataset::\link{as_dataset_df}}.
+#' @param x A semantically rich data frame object created by  \code{dataset::\link{dataset_df}} or
+#'  \code{dataset::\link{as_dataset_df}}.
 #' @param value The \code{Rights} as a character set.
 #' @param overwrite If the \code{Rights} attribute should be overwritten. In case it
 #' is set to \code{FALSE}, it gives a message with the current \code{Rights}
@@ -32,7 +32,7 @@ rights <- function(x) {
 `rights<-` <- function(x,  overwrite = FALSE, value) {
 
   assertthat::assert_that(is.dataset_df(x),
-                          msg = "rights(x): x must be a dataset object created with dataset() or as_dataset().")
+                          msg = "rights(x): x must be a dataset object created with dataset_f() or as_dataset_df().")
 
   DataBibentry <- invisible(get_bibentry(x))
 

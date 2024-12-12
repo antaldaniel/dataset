@@ -10,7 +10,8 @@ creator(x)
 creator(x, overwrite = TRUE) <- value
 }
 \arguments{
-\item{x}{A dataset object created by \code{\link{dataset_df}}.}
+\item{x}{A semantically rich data frame object created by  \code{dataset::\link{dataset_df}} or
+\code{dataset::\link{as_dataset_df}}.}
 
 \item{overwrite}{If the attributes should be overwritten. In case it is set to \code{FALSE},
 it gives a message with the current \code{Creator} property instead of overwriting it.
