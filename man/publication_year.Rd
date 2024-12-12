@@ -39,6 +39,8 @@ publication_year(iris_dataset) <- 1936
 }
 \seealso{
 Other Reference metadata functions: 
+\code{\link{description}()},
+\code{\link{geolocation}()},
 \code{\link{language}},
 \code{\link{publisher}()},
 \code{\link{rights}()}

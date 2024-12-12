@@ -45,6 +45,8 @@ language(myiris)
 }
 \seealso{
 Other Reference metadata functions: 
+\code{\link{description}()},
+\code{\link{geolocation}()},
 \code{\link{publication_year}()},
 \code{\link{publisher}()},
 \code{\link{rights}()}

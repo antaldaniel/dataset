@@ -41,6 +41,8 @@ publisher(iris_dataset)
 }
 \seealso{
 Other Reference metadata functions: 
+\code{\link{description}()},
+\code{\link{geolocation}()},
 \code{\link{language}},
 \code{\link{publication_year}()},
 \code{\link{rights}()}
