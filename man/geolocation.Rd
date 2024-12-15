@@ -44,6 +44,7 @@ geolocation(iris_dataset, overwrite = FALSE) <- "GB"
 \seealso{
 Other Reference metadata functions: 
 \code{\link{description}()},
+\code{\link{identifier}()},
 \code{\link{language}},
 \code{\link{publication_year}()},
 \code{\link{publisher}()},

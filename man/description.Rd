@@ -38,6 +38,7 @@ description(iris_dataset)
 \seealso{
 Other Reference metadata functions: 
 \code{\link{geolocation}()},
+\code{\link{identifier}()},
 \code{\link{language}},
 \code{\link{publication_year}()},
 \code{\link{publisher}()},

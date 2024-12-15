@@ -43,6 +43,7 @@ publisher(iris_dataset)
 Other Reference metadata functions: 
 \code{\link{description}()},
 \code{\link{geolocation}()},
+\code{\link{identifier}()},
 \code{\link{language}},
 \code{\link{publication_year}()},
 \code{\link{rights}()}

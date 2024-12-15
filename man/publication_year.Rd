@@ -41,6 +41,7 @@ publication_year(iris_dataset) <- 1936
 Other Reference metadata functions: 
 \code{\link{description}()},
 \code{\link{geolocation}()},
+\code{\link{identifier}()},
 \code{\link{language}},
 \code{\link{publisher}()},
 \code{\link{rights}()}

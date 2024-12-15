@@ -58,6 +58,7 @@ reference:
       individual columns only.
     contents:
       - datacite
+      - dublincore
       - creator
       - dataset_title
       - language
@@ -65,6 +66,9 @@ reference:
       - publication_year
       - publisher
       - rights
+      - identifier
+      - description
+      - geolocation
   - title: "Replication Dataset"
     desc: >
       Edgar Anderson's Iris Dataset with dataset metadata recorded as attributes.
